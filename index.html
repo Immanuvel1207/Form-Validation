@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        .text- success {
+            color: #007bff;
+        }
+    </style>
+     <script>
+        function validate() {
+            var name = document.getElementsByName("name")[0].value;
+            var email = document.getElementsByName("email")[0].value;
+            var phone = document.getElementsByName("phonenumber")[0].value;
+            var date = document.getElementsByName("birth")[0].value;
+            var status = document.querySelector('input[name="status"]:checked');
+            var degree = document.querySelector('input[name="degree"]:checked');
+            var department = document.getElementsByName("department")[0].value;
+            var languages = document.querySelectorAll('input[name="languages"]:checked');
+            var address = document.getElementsByName("address")[0].value;
+            var password = document.getElementsByName("password")[0].value;
+            var confirmPassword = document.getElementsByName("confirmPassword")[0].value;
+
+            if (name === "" || email === "" || phone === "" || date === "" || !status || !degree || department === "" || languages.length === 0 || address === "" || password === "" || confirmPassword === "") {
+                alert("Please fill out all fields");
+                return false;
+            }
+
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert("Please enter a valid email address");
+                return false;
+            }
+
+            var phoneRegex = /^\d{10}$/;
+            if (!phoneRegex.test(phone)) {
+                alert("Please enter a 10-digit phone number");
+                return false;
+            }
+
+            var passwordRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+            if (!passwordRegex.test(password)) {
+                alert("Password must be at least 8 characters long, contain at least one uppercase letter and one digit");
+                return false;
+            }
+
+            if (password !== confirmPassword) {
+                alert("Password and confirm password do not match");
+                return false;
+            }
+            document.body.style.backgroundColor = "red";
+            document.write("<br>" + "<h1>"+ "Your Responses" +"</h1>"+ "<br>");
+            document.write('<div style="text-align: center;"><h3>Your name is ' + name + '<br><br>Your Email is ' + email + '<br><br>Phone number is ' + phone + '<br><br>Your date of birth is ' + date + ' <br><br> Your are ' + status.value + '<br><br> Degree: ' + degree.value + '<br><br> Department: ' + department + '<br><br> Languages Known: ' + Array.from(languages).map(lang => lang.value).join(", ") + '<br><br> Address: ' + address + '</h3></div>');
+        }
+    </script>
+</head>
+<body class="text-center bg-info">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <form name="form1" class="mx-auto" style="max-width: 400px;">
+        <h1 class="mb-4"><u style="color: brown;">Registration Form</u></h1>
+        <div class="mb-3">
+            <label for="name" class="form-label text- success">Name:</label>
+            <input type="text" id="name" name="name" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label text- success">Email:</label>
+            <input type="email" id="email" name="email" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="phonenumber" class="form-label text- success">Phone number:</label>
+            <input type="text" id="phonenumber" name="phonenumber" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="birth" class="form-label text- success">Date of Birth:</label>
+            <input type="date" id="birth" name="birth" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label class="form-label text- success">Marital Status:</label><br>
+            <input type="radio" name="status" value="Single" class="form-check-input">
+            <label class="form-check-label">Single</label>
+            <input type="radio" name="status" value="Married" class="form-check-input">
+            <label class="form-check-label">Married</label>
+        </div>
+        <div class="mb-3">
+            <label class="form-label text- success">Degree:</label><br>
+            <input type="radio" name="degree" value="BE" class="form-check-input">
+            <label class="form-check-label">BE</label>
+            <input type="radio" name="degree" value="BTECH" class="form-check-input">
+            <label class="form-check-label">BTECH</label>
+        </div>
+        <div class="mb-3">
+            <label for="department" class="form-label text- success">Department:</label><br>
+            <select name="department" id="department" class="form-select">
+            <option value="">Select Department</option>
+            <option value="Civil Engineering">Civil Engineering</option>
+            <option value="Mechanical Engineering">Mechanical Engineering</option>
+            <option value="Computer Science and Engineering">Computer Science and Engineering</option>
+            <option value="Electrical engineering">Electrical engineering</option>
+            <option value="Chemical Engineering">Chemical Engineering</option>
+            <option value="Biotechnology">Biotechnology</option>
+            <option value="Aerospace engineering">Aerospace engineering</option>
+            <option value="Automobile Engineering">Automobile Engineering</option>
+            <option value="Biomedical engineering">Biomedical engineering</option>
+            <option value="Marine engineering">Marine engineering</option>
+            <option value="Structural engineering">Structural engineering</option>
+            <option value="Information technology">Information technology</option>
+            <option value="Humanities">Humanities</option>
+            <option value="Mechatronics">Mechatronics</option>
+            <option value="Mining engineering">Mining engineering</option>
+            <option value="Power engineering">Power engineering</option>
+            <option value="Agricultural engineering">Agricultural engineering</option>
+            <option value="Machine learning">Machine learning</option>
+            <option value="BE Petrochemical Engineering">BE Petrochemical Engineering</option>
+            <option value="Data science">Data science</option>
+            <option value="Environmental engineering">Environmental engineering</option>
+            <option value="Electrical and Electronics Engineering">Electrical and Electronics Engineering</option>
+            <option value="Electronics and Communication Engineering">Electronics and Communication Engineering</option>
+            <option value="Industrial Engineering">Industrial Engineering</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label text- success">Languages Known:</label><br>
+            <input type="checkbox" name="languages" value="C" class="form-check-input">
+            <label class="form-check-label">C</label>
+            <input type="checkbox" name="languages" value="C++" class="form-check-input">
+            <label class="form-check-label">C++</label>
+            <input type="checkbox" name="languages" value="Python" class="form-check-input">
+            <label class="form-check-label">Python</label>
+            <input type="checkbox" name="languages" value="Java" class="form-check-input">
+            <label class="form-check-label">Java</label>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label text- success">Password:</label>
+            <input type="password" id="password" name="password" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="confirmPassword" class="form-label text- success">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="address" class="form-label text- success">Address:</label>
+            <textarea name="address" id="address" rows="4" cols="50" class="form-control"></textarea>
+        </div>
+        <input type="button" value="Submit" onclick="validate()" class="btn btn-success">
+    </form>
+</body>
+</html>
